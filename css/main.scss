@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --transition: .2s cubic-bezier(0, .2, .02, 1);
+}
+
+html, body {
+  height: 100%;
+  background-color: black;
+}
+
+.slider {
+  height: 100%;
+
+  &__wrapper {
+    will-change: transform;
+    //transition: var(--transition) !important; // because swiper library change it via inline style
+    transform-style: preserve-3d;
+  }
+
+  &__item {
+    overflow: hidden;
+  }
+
+  &__layer {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+    //transition: var(--transition) !important; // because swiper library change it via inline style
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      box-shadow: inset 0 0 250px rgb(0 0 0 / .3);
+    }
+  }
+}
